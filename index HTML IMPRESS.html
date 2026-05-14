@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impress Media – Multimedia Designing &amp; Photography | Coimbatore</title>
+  <meta name="description" content="Impress Media – Premium multimedia designing, photo laminations, wedding photo &amp; video coverage in Coimbatore. Affordable &amp; professional." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── CSS VARIABLES ─── */
+    :root {
+      --gold:      #C9A84C;
+      --gold-light:#F0D080;
+      --gold-dark: #8B6914;
+      --black:     #0A0A0A;
+      --dark:      #111111;
+      --dark2:     #1A1A1A;
+      --dark3:     #222222;
+      --white:     #F9F6F0;
+      --gray:      #888888;
+      --accent:    #E63946;
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      transition: padding 0.3s ease;
+    }
+    nav.scrolled { padding: 12px 48px; }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--white); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--black) !important;
+      padding: 10px 24px;
+      border-radius: 2px;
+      font-weight: 600 !important;
+      letter-spacing: 1px !important;
+      transition: background 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+    .nav-cta::after { display: none !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px; height: 2px;
+      background: var(--white);
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Mobile Nav */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: rgba(10, 10, 10, 0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 30px;
+      z-index: 997;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .mob-cta {
+      background: var(--gold);
+      color: var(--black) !important;
+      text-align: center;
+      padding: 14px;
+      font-weight: 700;
+      border-radius: 2px;
+      border: none;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 48px 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 50%, rgba(201,168,76,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 30%, rgba(230,57,70,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 100% at 50% 100%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        #0A0A0A;
+      animation: meshPulse 8s ease-in-out infinite alternate;
+    }
+    @keyframes meshPulse {
+      0%   { filter: brightness(1); }
+      100% { filter: brightness(1.15); }
+    }
+
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(201,168,76,0.04) 0px,
+        rgba(201,168,76,0.04) 1px,
+        transparent 1px,
+        transparent 40px
+      );
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+    }
+    .orb1 {
+      width: 400px; height: 400px;
+      background: rgba(201,168,76,0.12);
+      top: -100px; right: -100px;
+      animation: floatOrb 12s ease-in-out infinite alternate;
+    }
+    .orb2 {
+      width: 300px; height: 300px;
+      background: rgba(230,57,70,0.08);
+      bottom: -80px; left: -80px;
+      animation: floatOrb 9s ease-in-out 2s infinite alternate;
+    }
+    .orb3 {
+      width: 200px; height: 200px;
+      background: rgba(201,168,76,0.08);
+      top: 50%; left: 30%;
+      animation: floatOrb 14s ease-in-out 4s infinite alternate;
+    }
+    @keyframes floatOrb {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, 40px) scale(1.1); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      margin-bottom: 32px;
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      animation: fadeUp 0.9s ease 0.2s both;
+    }
+    .hero-title .line2 {
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: rgba(249, 246, 240, 0.7);
+      max-width: 600px;
+      margin: 24px auto 0;
+      font-weight: 300;
+      line-height: 1.7;
+      animation: fadeUp 0.9s ease 0.4s both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 48px;
+      animation: fadeUp 0.9s ease 0.6s both;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      padding: 16px 40px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: background 0.3s, transform 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: 16px 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(249, 246, 240, 0.3);
+      display: inline-block;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: border-color 0.3s, color 0.3s, transform 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+      animation: fadeIn 1s 1.2s ease both;
+    }
+    .scroll-hint span {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      color: var(--gray);
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollDrop 2s ease-in-out infinite;
+    }
+    @keyframes scrollDrop {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      50%  { transform: scaleY(1); transform-origin: top; }
+      51%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee-wrap {
+      background: var(--gold);
+      overflow: hidden;
+      padding: 14px 0;
+      border-top: 1px solid var(--gold-dark);
+      border-bottom: 1px solid var(--gold-dark);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      animation: marqueeScroll 25s linear infinite;
+      width: max-content;
+    }
+    .marquee-track span {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+    .marquee-track span::before { content: '✦ '; }
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTION SHARED ─── */
+    section { padding: 100px 48px; }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+    }
+    .section-line {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 20px 0 40px;
+    }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--dark); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .service-card {
+      background: var(--dark2);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .service-card:hover { border-color: var(--gold); transform: translateY(-6px); }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+    .service-num {
+      position: absolute;
+      top: 20px; right: 24px;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(201, 168, 76, 0.06);
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+    .service-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
+
+    /* ─── SHOWCASE SLIDES ─── */
+    #showcase { background: var(--dark); padding-bottom: 0; }
+
+    .slides-container {
+      position: relative;
+      overflow: hidden;
+      margin-top: 60px;
+      height: 520px;
+      border: 1px solid rgba(201, 168, 76, 0.08);
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      padding: 60px;
+    }
+    .slide.active { opacity: 1; }
+    .slide-bg-1 { background: linear-gradient(135deg, #0d0800 0%, #1a1000 40%, rgba(201,168,76,0.12) 100%); }
+    .slide-bg-2 { background: linear-gradient(135deg, #080010 0%, #100018 40%, rgba(100,50,200,0.12) 100%); }
+    .slide-bg-3 { background: linear-gradient(135deg, #000d0a 0%, #001812 40%, rgba(0,180,100,0.10) 100%); }
+    .slide-bg-4 { background: linear-gradient(135deg, #0d0005 0%, #180010 40%, rgba(230,57,70,0.12) 100%); }
+    .slide-bg-5 { background: linear-gradient(135deg, #050a00 0%, #0a1400 40%, rgba(100,180,0,0.10) 100%); }
+
+    .slide-content { text-align: center; z-index: 2; }
+    .slide-emoji {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      display: block;
+      animation: pulseSlow 3s ease-in-out infinite;
+    }
+    @keyframes pulseSlow {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.08); }
+    }
+    .slide-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .slide-headline .hl { color: var(--gold); }
+    .slide-sub {
+      font-size: 1rem;
+      color: rgba(249, 246, 240, 0.65);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .slide-nav {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      padding: 30px;
+      background: var(--dark);
+    }
+    .slide-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.3);
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s, width 0.3s;
+      padding: 0;
+    }
+    .slide-dot.active {
+      background: var(--gold);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    /* ─── STATS ─── */
+    #stats {
+      background: var(--gold);
+      padding: 60px 48px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      text-align: center;
+    }
+    .stat-item {
+      padding: 20px;
+      border-right: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--black);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.7);
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    /* ─── WHY US ─── */
+    #why {
+      background: var(--black);
+      background-image:
+        radial-gradient(ellipse 60% 50% at 90% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        repeating-linear-gradient(-45deg, rgba(201,168,76,0.025) 0px, rgba(201,168,76,0.025) 1px, transparent 1px, transparent 50px);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 60px;
+    }
+    .why-visual {
+      position: relative;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .why-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      animation: spinRing linear infinite;
+    }
+    .ring1 { width: 280px; height: 280px; animation-duration: 20s; }
+    .ring2 { width: 220px; height: 220px; animation-duration: 15s; animation-direction: reverse; border-style: dashed; }
+    .ring3 { width: 160px; height: 160px; animation-duration: 10s; }
+    @keyframes spinRing {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .why-center {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      box-shadow: 0 0 60px rgba(201, 168, 76, 0.3);
+      z-index: 1;
+    }
+
+    .why-points { display: flex; flex-direction: column; gap: 24px; }
+    .why-point { display: flex; gap: 20px; align-items: flex-start; }
+    .why-point-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .why-point h4 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+    .why-point p { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials { background: var(--black); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 60px;
+    }
+    .testimonial-card {
+      background: var(--dark2);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      padding: 36px;
+      position: relative;
+    }
+    .quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.2;
+      position: absolute;
+      top: 16px; left: 24px;
+      line-height: 1;
+    }
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: rgba(249, 246, 240, 0.8);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--black);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .author-name { font-weight: 600; font-size: 0.9rem; }
+    .author-loc { font-size: 0.75rem; color: var(--gray); }
+    .stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 16px; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--dark); }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 60px;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 32px; }
+    .contact-item { display: flex; gap: 20px; align-items: flex-start; }
+    .contact-icon {
+      width: 50px; height: 50px;
+      flex-shrink: 0;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .contact-item h4 {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .contact-item p { font-size: 0.95rem; line-height: 1.6; }
+    .contact-item a { color: var(--white); text-decoration: none; transition: color 0.3s; }
+    .contact-item a:hover { color: var(--gold); }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.88rem;
+    }
+    .hours-row:last-child { border: none; }
+    .hours-row .day { color: var(--gray); }
+    .hours-row .time { color: var(--gold); font-weight: 600; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group label {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      padding: 14px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.3s;
+      border-radius: 2px;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select option { background: var(--dark2); color: var(--white); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    #form-success {
+      display: none;
+      text-align: center;
+      color: var(--gold);
+      padding: 16px;
+      border: 1px solid var(--gold);
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(201, 168, 76, 0.15);
+      padding: 60px 48px 40px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .footer-brand-desc {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.8;
+      max-width: 280px;
+    }
+    .footer-col h5 {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-col ul li a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.3s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .footer-copy { font-size: 0.78rem; color: var(--gray); }
+    .footer-tagline { font-size: 0.78rem; color: var(--gold); font-style: italic; }
+
+    /* ─── WHATSAPP FLOAT ─── */
+    .wa-float {
+      position: fixed;
+      bottom: 30px; right: 30px;
+      z-index: 998;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      animation: waPop 2s ease-in-out infinite;
+    }
+    @keyframes waPop {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.08); }
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp   { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 70px 20px; }
+      #hero { padding: 120px 20px 80px; }
+      .why-grid { grid-template-columns: 1fr; gap: 40px; }
+      .why-visual { display: none; }
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .slides-container { height: 420px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-btns { flex-direction: column; align-items: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      nav { padding: 14px 16px; }
+      section { padding: 60px 16px; }
+      footer { padding: 50px 16px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── WHATSAPP FLOAT ─── -->
+<a href="https://wa.me/919994935252" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">💬</a>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Impress <span>Media</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#showcase">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#why" onclick="closeMobileMenu()">Why Us</a>
+  <a href="#showcase" onclick="closeMobileMenu()">Gallery</a>
+  <a href="#testimonials" onclick="closeMobileMenu()">Reviews</a>
+  <a href="#contact" class="mob-cta" onclick="closeMobileMenu()">Contact Us</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Premium Creative Studio — Coimbatore ✦</div>
+    <h1 class="hero-title">
+      Where Every Frame<br>
+      <span class="line2">Tells Your Story</span>
+    </h1>
+    <p class="hero-tagline">
+      Stunning multimedia design, timeless wedding coverage, and premium photo laminations — crafted with passion, delivered with excellence.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book a Session</a>
+      <a href="#services" class="btn-secondary">Explore Services</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Multimedia Design</span>
+    <span>Photo Laminations</span>
+    <span>Wedding Coverage</span>
+    <span>Video Production</span>
+    <span>Banner Printing</span>
+    <span>Digital Editing</span>
+    <span>Portrait Photography</span>
+    <span>Event Coverage</span>
+    <span>Branding Design</span>
+    <span>Multimedia Design</span>
+    <span>Photo Laminations</span>
+    <span>Wedding Coverage</span>
+    <span>Video Production</span>
+    <span>Banner Printing</span>
+    <span>Digital Editing</span>
+    <span>Portrait Photography</span>
+    <span>Event Coverage</span>
+    <span>Branding Design</span>
+  </div>
+</div>
+
+<!-- ─── SERVICES ─── -->
+<section id="services">
+  <span class="section-label reveal">What We Offer</span>
+  <h2 class="section-title reveal">Our Premium Services</h2>
+  <div class="section-line reveal"></div>
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <span class="service-num">01</span>
+      <span class="service-icon">🎨</span>
+      <h3>Multimedia Designing</h3>
+      <p>Eye-catching graphic designs for banners, hoardings, digital media, social posts, and branding — tailored to make your business shine.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="service-num">02</span>
+      <span class="service-icon">💍</span>
+      <h3>Wedding Photo &amp; Video</h3>
+      <p>Capture every emotional moment, every smile, every tear of joy. Cinematic wedding films and stunning photography that last a lifetime.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="service-num">03</span>
+      <span class="service-icon">🖼️</span>
+      <h3>Photo Laminations</h3>
+      <p>Premium quality photo lamination services — matte, gloss, and specialty finishes to protect and beautify your precious memories.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="service-num">04</span>
+      <span class="service-icon">🎬</span>
+      <h3>Video Production</h3>
+      <p>Professional video shoots, editing, and post-production for events, advertisements, reels, and corporate presentations.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="service-num">05</span>
+      <span class="service-icon">📸</span>
+      <h3>Portrait &amp; Event Photography</h3>
+      <p>Birthday celebrations, family portraits, corporate events, product shoots — every frame composed with creative excellence.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <span class="service-num">06</span>
+      <span class="service-icon">🖨️</span>
+      <h3>Printing &amp; Branding</h3>
+      <p>Visiting cards, flex banners, brochures, standees, and all your marketing material — printed to perfection at competitive prices.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── SHOWCASE SLIDES ─── -->
+<section id="showcase">
+  <span class="section-label reveal">Why Choose Impress Media</span>
+  <h2 class="section-title reveal">We Don't Just Create —<br><span style="color:var(--gold)">We Impress.</span></h2>
+  <div class="section-line reveal"></div>
+
+  <div class="slides-container reveal">
+    <div class="slide slide-bg-1 active">
+      <div class="slide-content">
+        <span class="slide-emoji">💍</span>
+        <h3 class="slide-headline">Your Wedding Deserves<br>A <span class="hl">Cinematic Legacy</span></h3>
+        <p class="slide-sub">We capture love stories that move hearts. Timeless, elegant, unforgettable — because your biggest day deserves the best frame.</p>
+      </div>
+    </div>
+    <div class="slide slide-bg-2">
+      <div class="slide-content">
+        <span class="slide-emoji">🎨</span>
+        <h3 class="slide-headline">Designs That <span class="hl">Stop the Scroll</span><br>and Win Attention</h3>
+        <p class="slide-sub">Bold graphics, stunning visuals, brand identities — we design with purpose and deliver with perfection.</p>
+      </div>
+    </div>
+    <div class="slide slide-bg-3">
+      <div class="slide-content">
+        <span class="slide-emoji">💰</span>
+        <h3 class="slide-headline">Premium Quality.<br><span class="hl">Affordable Price.</span></h3>
+        <p class="slide-sub">Top-tier creative work doesn't have to cost a fortune. We believe great design is for everyone — not just a few.</p>
+      </div>
+    </div>
+    <div class="slide slide-bg-4">
+      <div class="slide-content">
+        <span class="slide-emoji">⚡</span>
+        <h3 class="slide-headline">Fast Delivery.<br><span class="hl">Zero Compromise</span> on Quality.</h3>
+        <p class="slide-sub">We respect your deadlines as much as you do. Quick turnarounds without cutting a single corner on craftsmanship.</p>
+      </div>
+    </div>
+    <div class="slide slide-bg-5">
+      <div class="slide-content">
+        <span class="slide-emoji">🌟</span>
+        <h3 class="slide-headline">Customer First.<br><span class="hl">Always &amp; Forever.</span></h3>
+        <p class="slide-sub">Your vision is our mission. We listen, understand, and deliver exactly what your heart imagines — every single time.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-nav" role="tablist" aria-label="Slide navigation">
+    <button class="slide-dot active" onclick="goSlide(0)" aria-label="Slide 1"></button>
+    <button class="slide-dot" onclick="goSlide(1)" aria-label="Slide 2"></button>
+    <button class="slide-dot" onclick="goSlide(2)" aria-label="Slide 3"></button>
+    <button class="slide-dot" onclick="goSlide(3)" aria-label="Slide 4"></button>
+    <button class="slide-dot" onclick="goSlide(4)" aria-label="Slide 5"></button>
+  </div>
+</section>
+
+<!-- ─── STATS ─── -->
+<section id="stats" aria-label="Business statistics">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num" data-count="500">0+</div>
+      <div class="stat-label">Happy Clients</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-count="200">0+</div>
+      <div class="stat-label">Weddings Covered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-count="5">0+</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-count="100">0%</div>
+      <div class="stat-label">Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY US ─── -->
+<section id="why">
+  <span class="section-label reveal">Our Promise</span>
+  <h2 class="section-title reveal">Built on Trust &amp;<br>Creative Passion</h2>
+  <div class="section-line reveal"></div>
+  <div class="why-grid">
+    <div class="why-visual reveal" aria-hidden="true">
+      <div class="why-ring ring1"></div>
+      <div class="why-ring ring2"></div>
+      <div class="why-ring ring3"></div>
+      <div class="why-center">🏆</div>
+    </div>
+    <div class="why-points">
+      <div class="why-point reveal">
+        <div class="why-point-icon" aria-hidden="true">🎯</div>
+        <div>
+          <h4>Client-First Approach</h4>
+          <p>Every project starts with listening. We understand your needs, goals, and vision — and then bring it to life.</p>
+        </div>
+      </div>
+      <div class="why-point reveal">
+        <div class="why-point-icon" aria-hidden="true">💎</div>
+        <div>
+          <h4>Unmatched Quality</h4>
+          <p>From equipment to execution, we use professional-grade tools and creative expertise to deliver outstanding results.</p>
+        </div>
+      </div>
+      <div class="why-point reveal">
+        <div class="why-point-icon" aria-hidden="true">💸</div>
+        <div>
+          <h4>Affordable Packages</h4>
+          <p>Premium services shouldn't burn a hole in your pocket. We offer competitive, transparent pricing for every budget.</p>
+        </div>
+      </div>
+      <div class="why-point reveal">
+        <div class="why-point-icon" aria-hidden="true">⏰</div>
+        <div>
+          <h4>Open 12 Hours Daily</h4>
+          <p>We're available from 10 AM to 10 PM, every day. When you need us, we're here — ready to help.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section id="testimonials">
+  <span class="section-label reveal">Client Love</span>
+  <h2 class="section-title reveal">What Our Clients Say</h2>
+  <div class="section-line reveal"></div>
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card reveal">
+      <div class="quote-mark" aria-hidden="true">"</div>
+      <div class="stars" aria-label="5 stars">★★★★★</div>
+      <p class="testimonial-text">Impress Media captured our wedding so beautifully. Every emotion, every moment was preserved perfectly. The team was professional and so warm. Highly recommend!</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" aria-hidden="true">AR</div>
+        <div>
+          <div class="author-name">Anitha &amp; Rajesh</div>
+          <div class="author-loc">Wedding Clients, Coimbatore</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="quote-mark" aria-hidden="true">"</div>
+      <div class="stars" aria-label="5 stars">★★★★★</div>
+      <p class="testimonial-text">Got my shop banner and visiting cards done here. The quality is brilliant and the price was very reasonable. Completed everything on time. Will definitely come back!</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" aria-hidden="true">SK</div>
+        <div>
+          <div class="author-name">Suresh Kumar</div>
+          <div class="author-loc">Business Owner, RS Puram</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="quote-mark" aria-hidden="true">"</div>
+      <div class="stars" aria-label="5 stars">★★★★★</div>
+      <p class="testimonial-text">The photo lamination quality is top notch. They handled our family album with so much care and the output was stunning. The staff was very helpful and friendly!</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" aria-hidden="true">PM</div>
+        <div>
+          <div class="author-name">Priya M.</div>
+          <div class="author-loc">Satisfied Customer, Coimbatore</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <span class="section-label reveal">Get In Touch</span>
+  <h2 class="section-title reveal">Let's Create Something<br><span style="color:var(--gold)">Extraordinary Together</span></h2>
+  <div class="section-line reveal"></div>
+  <div class="contact-layout">
+
+    <div class="contact-info reveal">
+      <div class="contact-item">
+        <div class="contact-icon" aria-hidden="true">📍</div>
+        <div>
+          <h4>Visit Us</h4>
+          <p>No.1, Desabandhu Street,<br>Ramnagar, Coimbatore – 641009</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon" aria-hidden="true">📞</div>
+        <div>
+          <h4>Call / WhatsApp</h4>
+          <p><a href="tel:+919994935252">+91 9994935252</a></p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon" aria-hidden="true">✉️</div>
+        <div>
+          <h4>Email Us</h4>
+          <p><a href="mailto:impressmediacbe@gmail.com">impressmediacbe@gmail.com</a></p>
+        </div>
+      </div>
+      <div>
+        <h4 style="font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Working Hours</h4>
+        <div class="hours-row"><span class="day">Monday – Sunday</span><span class="time">10:00 AM – 10:00 PM</span></div>
+        <div class="hours-row"><span class="day">All Days Open</span><span class="time">Including Holidays</span></div>
+      </div>
+      <a href="https://maps.google.com/?q=Ramnagar+Coimbatore" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-align:center;">📍 Get Directions</a>
+    </div>
+
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">Your Name</label>
+          <input type="text" id="fname" placeholder="Full Name" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="fphone">Phone Number</label>
+          <input type="tel" id="fphone" placeholder="+91 XXXXXXXXXX" autocomplete="tel" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="femail">Email Address</label>
+        <input type="email" id="femail" placeholder="your@email.com" autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label for="fservice">Service Required</label>
+        <select id="fservice">
+          <option value="">Select a service...</option>
+          <option value="Wedding Photo &amp; Video Coverage">Wedding Photo &amp; Video Coverage</option>
+          <option value="Multimedia Designing">Multimedia Designing</option>
+          <option value="Photo Lamination">Photo Lamination</option>
+          <option value="Banner / Flex Printing">Banner / Flex Printing</option>
+          <option value="Portrait Photography">Portrait Photography</option>
+          <option value="Event Coverage">Event Coverage</option>
+          <option value="Video Production">Video Production</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="fmsg">Message</label>
+        <textarea id="fmsg" placeholder="Tell us about your requirement..."></textarea>
+      </div>
+      <button type="button" class="btn-primary" onclick="submitForm()" style="width:100%;font-size:0.9rem;">Send Enquiry →</button>
+      <div id="form-success">✅ Thank you! We'll get back to you shortly.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Impress Media</div>
+      <p class="footer-brand-desc">Your trusted creative partner in Coimbatore for multimedia designing, premium photography, wedding coverage, and more — at prices that make sense.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Multimedia Designing</a></li>
+        <li><a href="#services">Wedding Coverage</a></li>
+        <li><a href="#services">Photo Laminations</a></li>
+        <li><a href="#services">Video Production</a></li>
+        <li><a href="#services">Printing &amp; Branding</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+919994935252">+91 9994935252</a></li>
+        <li><a href="mailto:impressmediacbe@gmail.com">impressmediacbe@gmail.com</a></li>
+        <li><a href="https://maps.google.com/?q=Ramnagar+Coimbatore" target="_blank" rel="noopener noreferrer">No.1, Desabandhu St,<br>Ramnagar, CBE-641009</a></li>
+        <li><a href="https://wa.me/919994935252" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Impress Media. All rights reserved.</p>
+    <p class="footer-tagline">✦ Crafted with passion in Coimbatore ✦</p>
+  </div>
+</footer>
+
+<!-- ─── SCRIPTS ─── -->
+<script>
+  /* ── NAV scroll ── */
+  window.addEventListener('scroll', function() {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  /* ── Mobile menu ── */
+  function toggleMobileMenu() {
+    var menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  /* ── Slideshow ── */
+  var currentSlide = 0;
+  var slides = document.querySelectorAll('.slide');
+  var dots = document.querySelectorAll('.slide-dot');
+  var slideInterval;
+
+  function goSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = n;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  function nextSlide() {
+    goSlide((currentSlide + 1) % slides.length);
+  }
+
+  slideInterval = setInterval(nextSlide, 4000);
+
+  /* ── Reveal on scroll ── */
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    revealObserver.observe(el);
+  });
+
+  /* ── Count-up stats ── */
+  var statsAnimated = false;
+  var statsObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = 'true';
+        var el = entry.target;
+        var target = parseInt(el.dataset.count, 10);
+        var suffix = target === 100 ? '%' : '+';
+        var count = 0;
+        var step = Math.max(1, Math.ceil(target / 60));
+        var timer = setInterval(function() {
+          count = Math.min(count + step, target);
+          el.textContent = count + suffix;
+          if (count >= target) {
+            el.textContent = target + suffix;
+            clearInterval(timer);
+          }
+        }, 25);
+        statsObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-num').forEach(function(el) {
+    statsObserver.observe(el);
+  });
+
+  /* ── Contact form – sends via WhatsApp ── */
+  function submitForm() {
+    var name    = document.getElementById('fname').value.trim();
+    var phone   = document.getElementById('fphone').value.trim();
+    var email   = document.getElementById('femail').value.trim();
+    var service = document.getElementById('fservice').value;
+    var msg     = document.getElementById('fmsg').value.trim();
+
+    if (!name || !phone) {
+      alert('Please enter your name and phone number.');
+      return;
+    }
+
+    var text = '*New Enquiry – Impress Media*\n\n'
+      + 'Name: ' + name + '\n'
+      + 'Phone: ' + phone + '\n'
+      + (email ? 'Email: ' + email + '\n' : '')
+      + 'Service: ' + (service || 'Not specified') + '\n'
+      + 'Message: ' + (msg || '—');
+
+    window.open('https://wa.me/919994935252?text=' + encodeURIComponent(text), '_blank');
+    document.getElementById('form-success').style.display = 'block';
+  }
+</script>
+</body>
+</html>
